@@ -1,0 +1,79 @@
+!!!
+%html
+  %head
+    %title TssfSite
+    = stylesheet_link_tag    "960"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield :head
+  %body
+    - @menu_array = ["Clean Technology", "Healthcare", "Microfinance", "Education", "Infrastructure", "Environment"]
+    - @menu_images_array = ["cleantech.jpg", "healthcare.gif", "microfinance.jpg", "education.jpg", "infra.gif", "environment.jpg"]
+    .header
+      .header_content
+        %img.logo{:src=>"/assets/logo.png", :alt=>"The Skilled Samaritan"}
+        .main_menu.special
+          .menu_item
+            %img{:src=>"/assets/icons/home.png"}
+          .menu_item.has_dropdown.active
+            Projects
+            .dropdown.mega_dropdown
+              - @menu_array.each_with_index do |cat, i|
+                .column{:style=>"background-image: url(/assets/#{@menu_images_array[i]}); background-size: 100% 100%; background-repeat: no-repeat;"}
+                  %h4
+                    = cat
+                  .desc
+                    = Faker::Lorem.sentences(2).join('. ')
+                    .links
+                      %a.skilled{:href=>"#", :title=>"view #{@menu_array[i]} projects requiring a skilled volunteer"} Skilled
+                      %a.unskilled{:href=>"#", :title=>"view #{@menu_array[i]} projects requiring an unskilled volunteer"} Unskilled
+          .menu_item.has_dropdown
+            Research
+            .dropdown
+              %ul
+                - ["For Students", "For Researchers"].each do |item|
+                  %li
+                    %a
+                      = item
+          .menu_item.has_dropdown
+            Reaching Out
+            .dropdown
+              %ul
+                - ["Cultural Experiences", "Rural Experiences", "Organic Farming"].each do |item|
+                  %li
+                    %a
+                      = item
+          .menu_item.has_dropdown
+            Get Involved
+            .dropdown
+              %ul
+                - ["News", "Support a Group", "Promote / Join an event"].each do |item|
+                  %li
+                    %a
+                      = item
+          .menu_item.has_dropdown
+            About Us
+            .dropdown.last
+              %ul
+                - ["Contact Us", "Partners"].each do |item|
+                  %li
+                    %a
+                      = item
+          .floatfix
+        .top_ribbon
+          %a.donate{:href=>"#"} Donate Now
+          &nbsp;
+          %a.apply{:href=>"#"} Apply Now
+          &nbsp;
+          %a{:href=>"#"} Contact Us
+          &nbsp;
+          %a{:href=>"#"} 
+            %img{:src=>"/assets/icons/twitter.png", :title=>"follow us on twitter"}
+          &nbsp;
+          %a{:href=>"#"}
+            %img{:src=>"/assets/icons/fb.png", :title=>"follow us on facebook"}
+    = yield :breadcrumbs
+    #wrapper
+      .container_12
+        = yield
