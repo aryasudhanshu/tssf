@@ -1,9 +1,9 @@
 !!!
 %html
   %head
-    %title TssfSite
     = stylesheet_link_tag    "960"
     = stylesheet_link_tag    "application"
+    %link{:href => "http://fonts.googleapis.com/css?family=Asap:400,700", :rel => "stylesheet", :type => "text/css"}/
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield :head
@@ -16,7 +16,7 @@
         .main_menu.special
           .menu_item
             %img{:src=>"/assets/icons/home.png"}
-          .menu_item.has_dropdown.active
+          .menu_item.has_dropdown.active#projects_link
             Projects
             .dropdown.mega_dropdown
               - @menu_array.each_with_index do |cat, i|
@@ -68,10 +68,10 @@
           &nbsp;
           %a{:href=>"#"} Contact Us
           &nbsp;
-          %a{:href=>"#"} 
+          %a.social{:href=>"#"} 
             %img{:src=>"/assets/icons/twitter.png", :title=>"follow us on twitter"}
           &nbsp;
-          %a{:href=>"#"}
+          %a.social{:href=>"#"}
             %img{:src=>"/assets/icons/fb.png", :title=>"follow us on facebook"}
     = yield :breadcrumbs
     #wrapper

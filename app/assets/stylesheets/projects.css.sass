@@ -1,0 +1,25 @@
+@import "css3_mixins"
+
+h1
+  font-size: 2.25em
+  font-weight: normal
+  margin-bottom: 0.5em
+.project_snapshot
+  h5
+    color: #444
+    font-size: 1em
+    font-weight: bold
+    margin: 0
+    padding: 0 0.25em
+    margin-top: 0.5em
+  p
+    margin: 0
+    padding: 0.25em
+    margin-bottom: 0.5em
+    font-size: 1em
+    color: #444
+    border-bottom: 1px solid #ddd
+    @include box-shadow(0, 1px, 0, #fff)
+    &:last-child
+      margin-bottom: 0
+      padding-bottom: 0

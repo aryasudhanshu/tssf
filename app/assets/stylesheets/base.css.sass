@@ -1,0 +1,778 @@
+@import "css3_mixins"
+
+$blue: #acd
+$brown: #603311
+$light_blue: #bde
+$green: #6a0
+$green_alt: #0c8
+$yellow: #ff9
+$orange: #ff7f00
+$error_red: lighten(#600, 75%)
+$error_red_dark: #a88
+.special, h1, h2, h3, label
+  font-family: 'Asap', sans-serif
+  color: $green
+
+/// STICKY FOOTER!
+*
+  margin: 0
+html, body
+  height: 100%
+#wrapper 
+  text-align: justify
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -260px
+  padding: 0 0 1em 0
+  @include background-gradient(#ccc, #eee)
+.footer, .push 
+  height: 260px
+
+
+body
+  font-size: 12px
+  line-height: 18px
+  font-family: Arial, Helvetica, sans
+
+.header
+  @include background-gradient(#aaa, #ccc)
+  .header_content
+    width: 980px
+    height: 133px
+    margin: 0 auto
+    position: relative
+    img.logo
+      padding: 5px
+      max-height: 120px
+    .quick_links
+      text-align: right
+      float: right
+      a
+        color: white
+        line-height: 1.5em
+        font-size: 0.8em
+        @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.5))
+        font-weight: bold
+        img
+          max-height: 16px
+    .main_menu
+      font-size: 1.35em
+      position: absolute
+      bottom: 5px
+      left: 270px
+      width: 700px
+      text-align: right
+      font-weight: normal
+      padding: 0
+      margin: 0
+      list-style: none
+      .menu_item
+        padding: 0.5em
+        @include border-radius(0.5em)
+        color: black
+        height: 22px
+        text-decoration: none
+        display: inline-block
+        vertical-align: middle
+        cursor: pointer
+        @include text-shadow(0, 1px, 0, rgba(255, 255, 255, 0.5))
+        &:first-child
+        border: 1px solid transparent
+        border-bottom: 0
+        transition: background .25s
+        -moz-transition: background .25s 
+        -webkit-transition: background .25s
+        -o-transition: background .25s
+      .has_dropdown
+        position: relative
+        .dropdown
+          background: #fafafa
+          border: 1px solid #fefefe
+          border-bottom: 2px solid #fff
+          border-top: 0
+          @include box-shadow(0, 3px, 2px, rgba(0, 0, 0, 0.4))
+          @include border-radius-separate(0, 0.5em, 0.5em, 0.5em)
+          text-align: left
+          display: none
+          position: absolute
+          padding: 5px
+          top: 32px
+          left: -1px
+          width: 150%
+          font-size: 0.8em
+          z-index: 1000
+          @include text-shadow(0, 0, 0, #fff)
+          opacity: 0
+          transition: opacity .75s
+          -moz-transition: opacity .75s 
+          -webkit-transition: opacity .75s
+          -o-transition: opacity .75
+          ul
+            padding: 0
+            margin: 0
+            list-style: none
+          li
+            line-height: 1em
+            padding: 0.5em
+            @include transition(background, 0.15s)
+            a
+              display: block
+              padding-left: 0
+              color: #000
+              font-weight: normal
+              &:hover
+                @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.4))
+                color: white
+            &:hover
+              a
+                text-decoration: none
+                color: white
+                @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.4))
+              @include text-shadow(0, -1px, 0, #444)
+              background: $green
+        .dropdown.last
+          right: -1px
+          left: auto
+          @include border-radius-separate(0.5em, 0, 0.5em, 0.5em)            
+        .mega_dropdown
+          @include box-shadow(0, 3px, 3px, rgba(0, 0, 0, 0.4))
+          @include border-radius(0.5em)
+          width: 960px
+          padding: 10px
+          left: -489px
+          top: 32px
+          .column
+            padding: 0
+            width: 158px
+            border-left: 1px solid #aaa
+            border-right: 1px solid #444
+            height: 150px
+            background: #ca5
+            display: block
+            float: left
+            opacity: 0.75
+            cursor: default
+            @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 1))
+            @include transition(opacity, 0.25s)
+            h4, .desc
+              background: rgba(0, 0, 0, 0.7)
+              color: white
+              padding: 0.25em
+              height: 25px
+              @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 1))              
+            .desc
+              font-size: 0.85em
+              height: 115px
+              position: relative
+              .links
+                position: absolute
+                right: 0
+                bottom: 0.5em
+                text-align: right
+                a.skilled, a.unskilled
+                  background: $brown
+                  padding: 0.5em 1em
+                  @include border-radius(0.5em)
+                  margin-right: 0.25em
+                  color: #000
+                  text-align: center
+                  font-weight: bold
+                  color: white
+                  @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.4))
+                a.skilled
+                  color: white
+                  background: $green
+            &:hover
+              opacity: 1
+              text-decoration: none
+              h4, .desc
+                background: rgba(0, 0, 0, 0.85)
+              h4
+                @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.4))
+                color: $green
+      .menu_item:hover
+        color: white
+        @include text-shadow(0, -1px, 0, #444)
+        background: $green
+        .dropdown
+          opacity: 1
+      .active
+        color: white
+        @include text-shadow(0, -1px, 0, #444)
+        background: $green
+    .top_ribbon
+      @include text-shadow(0, -1px, 0, #444)
+      font-size: 1.1em
+      padding-top: 0.5em
+      position: absolute
+      right: 0
+      top: 0
+      text-align: right
+      img
+        vertical-align: middle
+      a
+        @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.8))
+      a.donate, a.apply
+        font-weight: normal
+        padding: 0.5em 0.75em
+        @include border-radius(0.25em)
+        background: darken($green, 5%)
+      a.apply
+        background: $brown
+      a.social
+        opacity: 0.5
+        text-decoration: none
+        @include transition(opacity, 0.25s)
+        &:hover
+          opacity: 1
+      .btn
+        padding: 0.25em
+        @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.3))
+        border: 1px solid #ccc
+        border: 1px solid rgba(0, 0, 0, 0.2)
+      .contact_button
+        background: darken($light_blue, 43%)
+        @include background-gradient(darken($orange, 3%), darken($orange, 7%))
+        &:before
+          width: 16px
+          height: 16px
+          content: '   '
+          background: url('../images/icons/contact.png')
+          display: inline-block
+          vertical-align: top
+        &:hover
+          @include background-gradient($orange, darken($orange, 3%))
+        &:active
+          @include background-gradient(darken($orange, 20%), darken($orange, 5%))
+          color: white
+      a
+        color: white
+        img
+          max-height: 24px
+.floatfix
+  clear: both
+.container_12
+  background: #fafafa
+  @include box-shadow(0, 0, 5px, #444)
+  @include border-radius(0.5em)
+  border: 1px solid #fefefe
+  border-top-width: 3px
+  color: #000
+  padding: 1em
+  padding-bottom: 0
+
+.slider_image
+  width: 960px
+  height: 250px
+  z-index: -50
+#slider, .big_banner
+  border: 1px solid #ccc
+.usps
+  .usp_box
+    padding: 0.5em 0
+    margin-top: 1em
+    border: 5px solid #fafafa
+    cursor: pointer
+    display: block
+    height: 150px
+    background: #cec
+    &:hover
+      background: #ffc
+.support_us
+  margin-top: 0.5em
+  padding: 0.5em 0
+  background: #d7f
+  .button
+    padding: 0.5em 0
+    text-align: center
+    background: #cc8
+    cursor: pointer
+    &:hover
+      background: #44f
+.footer
+  @include background-gradient(lighten($brown, 15%), $brown)
+  color: #fff
+  margin-top: 1em
+  border-top: 1px solid lighten($brown, 30%)
+  border-top: 1px solid rgba(0, 0, 0, 0.01)
+  @include box-shadow(0, -1px, 2px, rgba(0, 0, 0, 0.25))
+  @include text-shadow(0, 1px, 0, rgba(255, 255, 255, 0.5))
+  .footer_content
+    border: 1px solid lighten($brown, 30%)
+    border: 1px solid rgba(0, 0, 0, 0.1)
+    border-top: 0
+    border-bottom: 0      
+    background: rgba(0, 0, 0, 0.2)
+    height: 100%
+    padding: 0 1em
+    padding-bottom: 0
+    width: 960px
+    margin: 0 auto
+      @include box-shadow(0, 0, 5px, rgba(0, 0, 0, 0.5))
+.tabcontents
+  padding: 0
+  margin: 0
+  margin-right: 10px
+.project_tabs
+  margin: 0
+  border: 1px solid rgba(0, 0, 0, 0.2)
+  @include box-shadow(0, 0, 0.05em, rgba(0, 0, 0, 0.5))
+  @include border-radius(0.25em)       
+  display: inline-block
+  .tab
+    font-size: 1.25em
+    padding: 0.5em
+    @include background_gradient(#fafafa, #eeeeee)
+    color: black
+    text-decoration: none
+    @include text_shadow(0, 1px, 0, rgba(255, 255, 255, 0.7))
+    display: block
+    float: left
+    cursor: pointer
+    height: 1em
+    border-right: 1px solid #fff
+    border-left: 1px solid #ccc
+    border-right: 1px solid rgba(255, 255, 255, 0.5)
+    border-left: 1px solid rgba(0, 0, 0, 0.2)
+    &:first-child
+      @include border-radius-separate(0.25em, 0, 0, 0.25em) 
+      border-left: 1px solid transparent
+    &:last-child
+      @include border-radius-separate(0, 0.25em, 0.25em, 0) 
+      border-right: 1px solid transparent
+    &:hover
+      @include background_gradient(#eee, #ccc)
+  .active
+    background: #444
+    font-weight: bold
+    color: white
+    @include text_shadow(0, -1px, 0, rgba(0, 0, 0, 0.5))
+    &:hover
+      background: #444
+.project_actions
+  text-align: right
+  display: inline-block
+  vertical-align: top
+.project_snapshot
+  background: #f0f0f0
+  margin-top: 1em
+  margin-right: 0
+  border: 1px solid #fefefe
+  @include border-radius(0.25em)
+  @include box-shadow(0, 0, 3px, rgba(0, 0, 0, 0.5))
+  h4
+    background: $green
+    color: white
+    padding: 0.5em
+    font-weight: bold
+    @include border-radius-separate(0.25em, 0.25em, 0, 0)
+  .section
+    color: #444
+    padding: 0.5em
+    border-top: 1px solid #fff
+    border-bottom: 1px solid #ddd
+  .section_heading
+    color: #444
+    font-weight: bold
+.project_title
+  display: inline-block
+  vertical-align: middle
+
+
+//////////////// GLOBAL STYLES
+h1 
+  font-size: 2em
+  padding: 0.5em 0
+  line-height: 1em
+h2 
+  font-size: 1.75em
+  padding: 0.25em 0
+  line-height: 1.25em
+h3
+  font-size: 1.5em
+  padding: 0.25em 0
+  line-height: 1.5em
+h4
+  font-size: 1.25em
+#container_12, h1, h2, h3, p
+  @include text-shadow(0, 1px, 0, rgba(255, 255, 255, 1))
+p
+  line-height: 1.5em
+  margin: 1em 0
+.right_rounded
+  @include border-radius-separate(0, 0.25em, 0.25em, 0) 
+*::selection
+  background: $light_blue
+  color: black
+  @include text-shadow(none)
+a
+  padding: 0.25em
+  color: #444
+  font-weight: bold
+  @include text-shadow(0, 1px, 0, rgba(255, 255, 255, 0.5))
+  text-decoration: none
+  &:hover
+    color: darken($green, 10%)
+    text-decoration: underline
+  &:active
+    color: lighten($green, 10%)
+.breadcrumbs
+  font-weight: bold
+  width: 960px
+  margin: 0 auto 0 auto
+  padding: 1.5em 0 0.5em 0
+  color: #666
+  @include text-shadow(0, 1px, 0, rgba(255, 255, 255, 0.5))  
+  a
+    padding: 0.25em
+    color: #666
+    @include text-shadow(0, 1px, 0, rgba(255, 255, 255, 0.5))  
+    text-decoration: none
+    @include transition(color, 0.25s)
+    &:hover
+      text-decoration: underline
+      color: darken($green, 15%)
+    &:active
+      color: lighten($green, 15%)
+  span
+    color: #000
+    font-weight: bold
+#slider
+  margin-bottom: 1em
+.volunteer_button, .donate_button, .btn, input[type="submit"]
+  border: 0
+  font-family: 'Asap', sans-serif
+  font-size: 1.5em
+  min-width: 100px
+  color: white
+  padding: 0.5em 1em
+  @include border-radius(0.5em)
+  text-decoration: none
+  @include box-shadow(0, 3px, 2px, #444)
+  @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.5))
+  text-align: center
+  display: inline-block
+  font-weight: bold
+  &:hover
+    color: white
+    text-decoration: none
+  &:active
+    color: white
+    @include box-shadow(0, 2px, 2px, #444)
+.donate_button, .btn.green,  input[type="submit"]
+  background: #6a0
+  @include background-gradient(#6a0, #480)
+  &:hover
+    background: #8c0
+    color: white
+    @include background-gradient(#8c0, #590)
+  &:active
+    background: #260
+    @include background-gradient(#260, #6a0)
+    @include box-shadow(0, 2px, 2px, #444)
+.volunteer_button, .btn.brown
+  background: lighten($brown, 10%)
+  @include background-gradient(lighten($brown, 10%), $brown)
+  &:hover
+    background: lighten($brown, 20%)
+    @include background-gradient(lighten($brown, 20%), lighten($brown, 10%))
+  &:active
+    background: lighten($brown, 0%)
+    @include background-gradient(lighten($brown, 0%), lighten($brown, 20%))
+    @include box-shadow(0, 2px, 2px, #444)
+
+//Footer Styles
+h3
+  font-size: 1.5em
+  margin-top: 0.5em
+.footer
+  h1, h2, h3, h4, h5
+    color: #eee
+    @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 1))
+  color: #eee
+  @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 1))
+  .grid_4
+    width: 200px
+    margin-left: 10px
+  a
+    @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 1))
+    color: #eee
+    &:hover
+      text-decoration: underline
+  h3
+    font-weight: bold
+.right_rounded
+  @include border-radius(none)
+
+
+// Form styles
+fieldset
+  .field.active
+    background: lighten($green, 55%)
+    label
+      font-weight: bold
+  .field
+    @include transition(background, 0.25s)
+    padding: 1em 0
+    label
+      width: 200px
+      text-align: right
+      display: inline-block
+      vertical-align: top
+      padding-top: 0.25em
+      color: #444
+      font-size: 1.25em
+      margin-right: 0.5em
+    label.required
+      &:after
+        content: "*"
+        color: red
+    input[type="text"], select, textarea
+      font-family: Arial, Helvetica, sans
+      width: 300px
+      padding: 0.25em
+      font-size: 1.25em
+      background: lighten($green, 65%)
+      @include border-radius(0.5em)
+      border: 1px solid lighten($green, 30%)
+      @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.5))
+      &:hover
+        border: 1px solid darken($green, 1%)
+      &:focus
+        border: 1px solid darken($green, 1%)
+        background: #f0f0f0
+        @include box-shadow(0, 0, 5px, rgba(0, 0, 0, 0.5))
+    textarea
+      width: 500px
+      height: 150px
+    input[type="radio"]
+      padding: 0.25em 0
+.subsection_heading
+  margin-bottom: 1em
+  padding: 0 0.5em
+  padding-left: 0
+  font-weight: bold
+  @include text-shadow(0, 1px, 0, rgba(255, 255, 255, 1))
+  @include box-shadow(0, 1px, 0, #fff)
+.skilled
+  .subsection_heading
+    border-bottom: 1px solid $green
+    color: $green
+  .title
+    color: $green
+    font-weight: bold
+.unskilled
+  .subsection_heading
+    border-bottom: 1px solid $brown
+    color: $brown
+  .title
+    color: $brown
+    font-weight: bold
+.nivo-directionNav
+  a
+    background: $green
+    padding: 0.5em
+.float_right
+  float: right
+.project_box
+  height: 150px
+  border-bottom: 1px solid #ccc
+  @include box-shadow(0, 1px, 0, #fff)
+  @include transition(border, 0.25s)
+  .btn
+    @include box-shadow(0, 0, 0, #000)
+    padding: 0.25em
+    opacity: 0.5
+    @include transition(opacity, 0.25s)
+    &:active
+      @include box-shadow(0, 0, 0, #000)
+  img
+    border: 1px solid #ccc
+    @include box-shadow(0, 0, 1px, #fff)
+    opacity: 0.5
+    max-height: 100px
+    float: left
+    margin: 0.5em
+    margin-left: 0
+    @include transition(opacity, 0.25s)
+  &:hover
+    border-color: #999
+    img
+      opacity: 1
+    .btn
+      opacity: 1
+
+
+// Home Page Specific Styles
+.home_box
+  h2
+    font-weight: bold
+    border-bottom: 1px solid $green
+    @include box-shadow(0, 1px, 0, #fff)
+    padding: 5px
+.home_projects_box, .home_news_box
+  padding: 5px
+
+.column
+  padding: 0
+  width: 154px
+  border-left: 1px solid #aaa
+  border-right: 1px solid #444
+  height: 150px
+  background: #ca5
+  display: block
+  float: left
+  opacity: 0.75
+  cursor: default
+  @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 1))
+  @include transition(opacity, 0.25s)
+  h4, .desc
+    background: rgba(0, 0, 0, 0.7)
+    color: white
+    padding: 0.25em
+    height: 25px
+    @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 1))              
+  .desc
+    font-size: 0.85em
+    height: 115px
+    position: relative
+    .links
+      position: absolute
+      right: 0
+      bottom: 0.5em
+      text-align: right
+      a.skilled, a.unskilled
+        background: $brown
+        padding: 0.5em 1em
+        @include border-radius(0.5em)
+        margin-right: 0.25em
+        color: #000
+        text-align: center
+        font-weight: bold
+        color: white
+        @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.4))
+      a.skilled
+        color: white
+        background: $green
+  &:hover
+    opacity: 1
+    text-decoration: none
+    h4, .desc
+      background: rgba(0, 0, 0, 0.85)
+    h4
+      @include text-shadow(0, -1px, 0, rgba(0, 0, 0, 0.4))
+      color: $green
+
+.field.active
+  position: relative
+  label
+    font-weight: bold
+    color: $brown
+.field
+  @include transition(background, 0.25s)
+  padding: 0.5em 0
+  .tip
+    opacity: 0.7
+    position: absolute
+    display: none
+    background: $yellow
+    //@include background-gradient(#666, #888)
+    color: #444
+    @include text-shadow(0, -1px, 0, rgba(255, 255, 255, 0.8))
+    padding: 2px 7px
+    top: 2.75em
+    @include border-radius(0.25em)
+    border: 1px solid darken($yellow, 35%)
+  label
+    display: block
+    color: #444
+    font-size: 1.25em
+    padding: 0.25em
+  label.required
+    &:after
+      content: "*"
+      color: red
+  input[type="text"], select, textarea
+    width: 300px
+    padding: 0.25em
+    font-size: 1.25em
+    background: lighten($green, 65%)
+    @include border-radius(0.25em)
+    border: 1px solid lighten($green, 30%)
+    @include box-shadow(0, 0, 2px, rgba(0, 0, 0, 0.5))
+    &:hover
+      border: 1px solid darken($green, 1%)
+    &:focus
+      border: 1px solid darken($green, 1%)
+      background: #f0f0f0
+      @include box-shadow(0, 0, 5px, rgba(0, 0, 0, 0.5))
+    textarea
+      width: 500px
+      height: 150px
+    input[type="radio"]
+      padding: 0.25em 0
+
+#error_explanation
+  background: $error_red
+  @include border-radius(0.25em)
+  border: 1px solid $error_red_dark
+  padding: 0.25em 1em
+  box-shadow: inset 0 0 2px #fff
+  h2
+    font-size: 1.5em
+    color: $error_red_dark
+
+.field:hover
+  label
+    font-weight: bold
+    color: #555
+  input[type="text"], select, textarea
+    border: 1px solid darken($green, 1%)
+.field.active:hover
+  label
+    font-weight: bold
+    color: $brown
+
+.fieldset
+  h3
+    padding-bottom: 0
+    border-bottom: 1px solid #ddd
+    @include box-shadow(0, 1px, 0, #fff)
+
+.field .field_with_errors 
+  input
+    background: $error_red
+    border: 1px solid $error_red_dark
+    box-shadow: inset 0 0 2px #fff
+.actions input[type="submit"]
+  float: right
+  clear: both
+.actions
+  padding-bottom: 15px
+
+.field textarea
+  width: 680px
+  height: 300px
+.field.required
+  label:after
+    content: "*"
+    font-size: 1.5em
+    vertical-align: middle
+    font-weight: bold
+    padding-left: 0.25em
+    color: #a66
+h1
+  margin-top: 0
+  padding-top: 0
+.tabcontent
+  margin-top: 1em
+  margin-left: 0.5em
+
+input[type="text"].wide_input
+  width: 500px
+  
+table
+  td
+    border: 1px solid #fff
+    @include box-shadow(0, 0, 1px, #444)

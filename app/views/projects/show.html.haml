@@ -1,0 +1,29 @@
+- content_for :head do
+  %title
+    = @project.page_title.blank? ? "The Skilled Samaritan" : @project.page_title
+  %meta{name: "keywords", content: @project.meta_keyword}
+  %meta{name: "description", content: @project.meta_description}
+  = stylesheet_link_tag "projects"
+%h1= @project.name
+
+.project_tabs
+  .tab#tab1 Overview
+  .tab#tab2 Description
+  .tab#tab3 Fee and Dates
+  .tab#tab4 Location and Accomodation
+.tabcontents.grid_9
+  #tabcontent1.tabcontent
+    = BlueCloth.new(@project.overview).to_html.html_safe
+  #tabcontent2.tabcontent
+    = BlueCloth.new(@project.description).to_html.html_safe
+  #tabcontent3.tabcontent
+    = BlueCloth.new(@project.fee_and_dates).to_html.html_safe
+  #tabcontent4.tabcontent
+    = BlueCloth.new(@project.location_and_accomodation).to_html.html_safe
+.grid_3.project_snapshot.special
+  %h4 Project Snapshot
+  = BlueCloth.new(@project.snapshot).to_html.html_safe
+.floatfix
+= link_to 'Edit', edit_project_path(@project)
+\|
+= link_to 'Back', projects_path

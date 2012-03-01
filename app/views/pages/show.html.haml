@@ -1,14 +1,13 @@
-%p#notice= notice
+- content_for :head do
+  %title
+    = @page.page_title.blank? ? "The Skilled Samaritan" : @page.page_title
+  %meta{name: "keywords", content: @page.meta_keywords}
+  %meta{name: "description", content: @page.meta_description}
 
-%p
-  %b Name:
+%h1
   = @page.name
-%p
-  %b Meta tags:
-  = @page.meta_tags
-%p
-  %b Meta keywords:
-  = @page.meta_keywords
+
+= BlueCloth.new(@page.content).to_html.html_safe
 
 = link_to 'Edit', edit_page_path(@page)
 \|

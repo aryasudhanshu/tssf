@@ -5,15 +5,34 @@
       %ul
         - @page.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name, title: "name of the page here"
-  .field
-    = f.label :meta_tags
-    = f.text_field :meta_tags, title: "name of the page here"
-  .field
-    = f.label :meta_keywords
-    = f.text_field :meta_keywords, title: "CRY, hungry kids in Somalia"
+  .fieldset
+    %h3
+      Basic Info
+    .field
+      = f.label :name
+      = f.text_field :name, title: "name of the page here", :class => "wide_input"
+  .fieldset
+    %h3
+      Content
+    .field
+      = f.label :content
+      = f.text_area :content, title: "content for this page. to add images use the uploads section and copy the url from there", :class=>"markitup"
+  .fieldset
+    %h3
+      SEO Related
+    .field
+      = f.label :meta_description
+      = f.text_field :meta_description, title: "name of the page here", :class => "wide_input"
+    .field
+      = f.label :meta_keywords
+      = f.text_field :meta_keywords, title: "CRY, hungry kids in Somalia (comma separated)", :class => "wide_input"
+    .field
+      = f.label :slug
+      = f.text_field :slug, title: "url for this page", :class => "wide_input"
+    .field
+      = f.label :page_title
+      = f.text_field :page_title, title: "the title that will appear on the browser bar", :class => "wide_input"
   .actions
     = f.submit 'Save'
+    %br
+

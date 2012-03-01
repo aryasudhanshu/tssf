@@ -1,0 +1,42 @@
+= form_for @project do |f|
+  -if @project.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+      %ul
+        - @project.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field.required
+    = f.label :title
+    = f.text_field :title, title:"This is the heading of the project"
+  .field.required
+    = f.label :meta_keyword
+    = f.text_field :meta_keyword, title:"Meta Keywords for SEO"
+  .field.required
+    = f.label :meta_description
+    = f.text_field :meta_description, title:"Meta Description for SEO"
+  .field.required
+    = f.label :overview
+    = f.text_area :overview, title:"Overview of the project"
+  .field
+    = f.label :description
+    = f.text_area :description, title:"Detailed description of the project"
+  .field
+    = f.label :fee_and_dates
+    = f.text_area :fee_and_dates, title:"Fees and dates"
+  .field
+    = f.label :location_and_accomodation
+    = f.text_area :location_and_accomodation, title:"Details of location and accomodation"
+  .field.required
+    = f.label :snapshot
+    = f.text_area :snapshot, title:"This will appear in the project snapshot box"
+  .field.required
+    = f.label :category
+    = f.text_area :category
+  .field
+    = f.label :skilled
+    = f.check_box :skilled, title:"Check this if this project requires skills"
+
+
+  .actions
+    = f.submit 'Save'

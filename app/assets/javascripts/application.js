@@ -6,7 +6,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require set
+//= require jquery.markitup
+
 
 
 $(document).ready(function(){
@@ -29,21 +31,20 @@ $(document).ready(function(){
 	$('.project_tabs .tab.active').removeClass('active');
 	$(this).addClass('active');
 	var tgt = '#tabcontent' + $(this).attr('id').replace('tab', '');
-	$('.tabcontent').hide()
-	$(tgt).show();
+	$('.tabcontent').slideUp(200)
+	$(tgt).slideDown(200);
     });
 
     // append tip div for every form element that has a title attribute
-    $('input, select').each(function(i, el){
+    $('input, select, textarea').each(function(i, el){
 	el = $(el);
 	var title = el.attr('title') || "";
 	var width = el.width();
 	if (title!="")
 	    el.closest('.field').append("<div class='tip'></div>");
 	el.closest('.field').children('.tip').css("left", width + 15);
-	
     });
-    $('input, select').focus(function(){
+    $('input, select, textarea').focus(function(){
 	var parent_field = $(this).closest('.field');
 	parent_field.addClass('active');
 	var title = $(this).attr("title");
@@ -52,9 +53,25 @@ $(document).ready(function(){
 	    tip_div.append(title);	
 	tip_div.fadeIn(500);
     });
-    $('input, select').blur(function(){
+    $('input, select, textarea').blur(function(){
 	var parent_field = $(this).closest('.field');
 	parent_field.removeClass('active');
 	parent_field.children('.tip').html("").fadeOut(100);	
     });
+    
+    $('.field').click(function(){
+	$(this).children('input[type="text"], select, textarea').focus();
+    });
+    $('.markitup').markItUp(myMarkdownSettings);
+
+    $('#projects_link').click(function(){
+	window.location.href = "/projects";
+    });
+    $('.menu_item:not("#projects_link")').click(function(){
+	window.location.href = "/pages";
+    });
+
 })
+
+
+

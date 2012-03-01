@@ -1,0 +1,52 @@
+= form_for @project do |f|
+  -if @project.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+      %ul
+        - @project.errors.full_messages.each do |msg|
+          %li= msg
+  .fieldset
+    %h3 Basic Info
+    .field.required
+      = f.label :name
+      = f.text_field :name, title:"This is the heading of the project", :class => "wide_input"
+    .field.required
+      = f.label :category
+      = f.select :category, options_for_select(Project::CATEGORIES)
+    .field
+      = f.label :skilled
+      = f.check_box :skilled, title:"Check this if this project requires skills"
+  .fieldset
+    %h3 Content
+  .field.required
+    = f.label :overview
+    = f.text_area :overview, title:"Overview of the project", :class => "markitup"
+  .field
+    = f.label :description
+    = f.text_area :description, title:"Detailed description of the project", :class => "markitup"
+  .field
+    = f.label :fee_and_dates
+    = f.text_area :fee_and_dates, title:"Fees and dates", :class => "markitup"
+  .field
+    = f.label :location_and_accomodation
+    = f.text_area :location_and_accomodation, title:"Details of location and accomodation", :class => "markitup"
+  .field.required
+    = f.label :snapshot
+    = f.text_area :snapshot, title:"This will appear in the project snapshot box", :class => "markitup"
+  .fieldset
+    %h3 SEO Related
+    .field.required
+      = f.label :page_title
+      = f.text_field :page_title, title:"Meta Description for SEO", :class => "wide_input"
+    .field.required
+      = f.label :slug
+      = f.text_field :slug, title:"Meta Description for SEO", :class => "wide_input"
+    .field.required
+      = f.label :meta_keyword
+      = f.text_field :meta_keyword, title:"Meta Keywords for SEO", :class => "wide_input"
+    .field.required
+      = f.label :meta_description
+      = f.text_field :meta_description, title:"Meta Description for SEO", :class => "wide_input"
+
+  .actions
+    = f.submit 'Save'

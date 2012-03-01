@@ -1,0 +1,5 @@
+class RenameMetaTagsToMetaKeywords < ActiveRecord::Migration
+  def change
+    rename_column :pages, :mega_tags, :meta_description
+  end
+end

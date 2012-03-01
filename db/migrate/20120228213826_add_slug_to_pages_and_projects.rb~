@@ -1,0 +1,4 @@
+class AddSlugToPagesAndProjects < ActiveRecord::Migration
+  def change
+  end
+end

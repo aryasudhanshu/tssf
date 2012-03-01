@@ -1,0 +1,4 @@
+class AddCategoriesAndSkilledToProjects < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,0 +1,16 @@
+module Publishable
+  def self.included(base)
+    base.extend ClassMethods
+  end
+  
+  module ClassMethods
+    def published?
+      self.published
+    end
+    
+    def publish
+      self.publish = true
+    end
+  
+
+end

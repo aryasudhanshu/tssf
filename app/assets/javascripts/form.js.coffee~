@@ -1,0 +1,24 @@
+$("input, select, textarea").each (i, el) ->
+  el = $(el)
+  title = el.attr("title") or ""
+  width = el.width()
+  el.closest(".field").append "<div class='tip'></div>"  unless title is ""
+  el.closest(".field").children(".tip").css "left", width + 15
+
+$("input, select, textarea").focus ->
+  parent_field = $(this).closest(".field")
+  parent_field.addClass "active"
+  title = $(this).attr("title")
+  tip_div = parent_field.children(".tip")
+  tip_div.append title  unless title is tip_div.text()
+  tip_div.fadeIn 500
+
+$("input, select, textarea").blur ->
+  parent_field = $(this).closest(".field")
+  parent_field.removeClass "active"
+  parent_field.children(".tip").html("").fadeOut 100
+
+$(".field").click ->
+  $(this).children("input[type=\"text\"], select, textarea").focus()
+
+$(".markitup").markItUp myMarkdownSettings

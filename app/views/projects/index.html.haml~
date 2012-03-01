@@ -1,0 +1,33 @@
+%h1 Listing projects
+
+%table
+  %tr
+    %th Title
+    %th Meta keyword
+    %th Meta description
+    %th Overview
+    %th Description
+    %th Fee and dates
+    %th Location and accomodation
+    %th Snapshot
+    %th
+    %th
+    %th
+
+  - @projects.each do |project|
+    %tr
+      %td= project.title
+      %td= project.meta_keyword
+      %td= project.meta_description
+      %td= project.overview
+      %td= project.description
+      %td= project.fee_and_dates
+      %td= project.location_and_accomodation
+      %td= project.snapshot
+      %td= link_to 'Show', project
+      %td= link_to 'Edit', edit_project_path(project)
+      %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Project', new_project_path
